@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: $brandColor;
+  font-size: 18px;
+}
+
+.container {
+  header,
+  footer {
+    background-color: pink;
+    height: $heightHeader;
+  }
+
+  main {
+    background-color: yellow;
+    height: calc(100vh - #{$heightHeader * 2});
+    //calc(50% - #{$width / 2}
+    &:after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+
+    .left,
+    .right {
+      @include floatContainer;
+      width: 20%;
+      background-color: lightblue;
+    }
+
+    .center {
+      @include floatContainer;
+      width: 60%;
+    }
+  }
+
+}
+
+.btn {
+  @include btn;
+  &-blue {
+    @include btn;
+    background-color: blue;
+    border: 0;
+  }
+  &-orange {
+    @include btn;
+    background-color: orange;
+  }
+}
+
+//Margin-top-15
+//Margin-top-30
+//Margin-top-45
+//Margin-top-60
+$baseNumber : 20;
+@for $i from 1 through 4 {
+  .margin-top-#{$i * $baseNumber} {
+    margin-top: #{$i * $baseNumber}px;
+  }
+}
+
+$i: 1;
+@while $i < 5 {
+  .item-#{$i} {
+    font-size: 10px * $i;
+  }
+  $i: $i + 1;
+}
+
+@each $item in h1, h2, h3 {
+  .#{$item} {
+    color: red;
+  }
+}
+// .btn-blue {
+//   @include btn;
+//   background-color: blue;
+// }
