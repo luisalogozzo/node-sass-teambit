@@ -5,80 +5,44 @@
 }
 
 body {
-  color: $brandColor;
-  font-size: 18px;
+  font-family: 'HarmoniaSansProCyrRegular', Arial, sans-serif;
+  color: $textColor;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.clearfix:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.left {
+  float: left;
+}
+.right {
+  float: right;
 }
 
 .container {
-  header,
-  footer {
-    background-color: pink;
-    height: $heightHeader;
-  }
+  width: 68%;
+  margin: 0 auto;
+}
 
-  main {
-    background-color: yellow;
-    height: calc(100vh - #{$heightHeader * 2});
-    //calc(50% - #{$width / 2}
-    &:after {
-      content: '';
-      display: table;
-      clear: both;
-    }
-
-    .left,
-    .right {
-      @include floatContainer;
-      width: 20%;
-      background-color: lightblue;
-    }
-
-    .center {
-      @include floatContainer;
-      width: 60%;
-    }
-  }
-
+.list-unstyled {
+  list-style: none;
 }
 
 .btn {
   @include btn;
-  &-blue {
-    @include btn;
-    background-color: blue;
-    border: 0;
-  }
-  &-orange {
-    @include btn;
-    background-color: orange;
-  }
+
 }
 
-//Margin-top-15
-//Margin-top-30
-//Margin-top-45
-//Margin-top-60
-$baseNumber : 20;
-@for $i from 1 through 4 {
-  .margin-top-#{$i * $baseNumber} {
-    margin-top: #{$i * $baseNumber}px;
+.btn.slack {
+  svg {
+  vertical-align: middle;
   }
 }
-
-$i: 1;
-@while $i < 5 {
-  .item-#{$i} {
-    font-size: 10px * $i;
-  }
-  $i: $i + 1;
-}
-
-@each $item in h1, h2, h3 {
-  .#{$item} {
-    color: red;
-  }
-}
-// .btn-blue {
-//   @include btn;
-//   background-color: blue;
-// }
